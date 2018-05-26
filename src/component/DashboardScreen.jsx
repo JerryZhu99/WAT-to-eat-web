@@ -4,49 +4,30 @@ import { Container } from 'reactstrap';
 import "./DashboardScreen.css"
 
 import { Bar, Doughnut } from 'react-chartjs-2'
+import Data from '../Data';
+import LoadingSpinner from './LoadingSpinner';
 
 class DashboardScreen extends Component {
     constructor(props) {
         super(props);
-
-        let dates = [7, 6, 5, 4, 3, 2, 1].map(i => (
-            new Date(Date.now() - 24 * 60 * 60 * 1000 * i).toLocaleDateString()
-        ))
-
         this.state = {
-            timeData: {
-                data: {
-                    labels: dates,
-                    datasets: [
-                        {
-                            label: "Recent spending",
-                            backgroundColor: "#81C784",
-                            data: [7.05, 9.33, 4.19, 19.07, 30.23, 7.01, 0]
-                        },
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    bezierCurve: false,
-                }
-            },
-            categoryData: {
-                data: {
-                    labels: ["Food", "Luxury", "Other"],
-                    datasets: [
-                        {
-                            data: [12, 25, 16],
-                            backgroundColor: ["#E57373", "#81C784", "#64B5F6"],
-                        }
-                    ]
-                },
-
-            }
+            loaded: false
         }
+
+        Data.loadData().then((data) => {
+            this.setState({
+                timeData: data.timeData,
+                categoryData: data.categoryData,
+                loaded: true
+            })
+        })
     }
 
 
     render() {
+        if (!this.state.loaded) return (
+            <LoadingSpinner />
+        )
         return (
             <div className="Dashboard">
                 <Container>

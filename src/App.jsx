@@ -6,6 +6,26 @@ import WelcomeScreen from './component/WelcomeScreen';
 import { Route, Switch, Redirect } from 'react-router-dom'
 import LoginScreen from './component/LoginScreen';
 import DashboardScreen from './component/DashboardScreen';
+import Auth from './Auth';
+
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      Auth.signedIn ? (
+        <Component {...props} />
+      ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
+    }
+  />
+);
 class App extends Component {
 
   state = {
@@ -13,19 +33,19 @@ class App extends Component {
   }
 
   signIn = () => {
-    this.setState({ signedIn: true }, () => {
-      console.log("signed in")
-    })
+    return Auth.signIn().then(() => {
+      this.setState({ signedIn: Auth.signedIn });
+    });
   }
   signOut = () => {
-    this.setState({ signedIn: false }, () => {
-    })
+    return Auth.signOut().then(() => {
+      this.setState({ signedIn: Auth.signedIn });
+    });
   }
 
   render() {
-    console.log(this.state.signedIn)
     return (
-      <div className="App">
+      <div className="App" >
         <Switch>
           <Route path="/login" />
           <Route render={() => <Navbar signedIn={this.state.signedIn} signOut={this.signOut} />} />
@@ -33,7 +53,7 @@ class App extends Component {
 
         <Switch>
           <Route exact path="/" component={WelcomeScreen} />
-          <Route path="/dashboard" component={DashboardScreen} />
+          <PrivateRoute path="/dashboard" component={DashboardScreen} />
           <Route path="/login" render={() => <LoginScreen signedIn={this.state.signedIn} signIn={this.signIn} />} />
           <Redirect to="/" />
         </Switch>
