@@ -9,7 +9,7 @@ import {
   NavLink,
   Button
 } from 'reactstrap';
-
+import { Link } from 'react-router-dom'
 class AppNavbar extends Component {
   constructor(props) {
     super(props);
@@ -32,24 +32,30 @@ class AppNavbar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink href="/dashboard">Dashboard</NavLink>
+                <Link to="/dashboard"><NavLink>Dashboard</NavLink></Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/suggestions">Suggestions</NavLink>
+                <Link to="/suggestions"><NavLink>Suggestions</NavLink></Link>
               </NavItem>
 
             </Nav>
             <Nav navbar className="ml-auto">
-              <NavItem>
+              <NavItem className="d-none d-md-block">
                 {this.props.signedIn ?
                   <Button onClick={this.props.signOut} color="primary">Logout</Button> :
-                  <Button href="/login" color="primary">Login</Button>
+                  <Link to="/login"><Button color="primary">Login</Button></Link>
                 }
               </NavItem>
+              {
+                this.props.signedIn ?
+                  <NavItem className="d-block d-md-none"
+                    onClick={this.props.signOut}>Logout</NavItem> :
+                  <Link to="/login"><NavItem className="d-block d-md-none">Login</NavItem></Link>
+              }
             </Nav>
           </Collapse>
         </Navbar>
-      </div>
+      </div >
     );
   }
 }
