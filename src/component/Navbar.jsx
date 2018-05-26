@@ -26,7 +26,7 @@ class AppNavbar extends Component {
     return (
       <div className="Navbar">
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">WAT to Eat</NavbarBrand>
+          <NavbarBrand href="/" style={{ fontFamily: "'Merriweather', sans-serif" }}>WAT to Eat</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
