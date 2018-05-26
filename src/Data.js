@@ -22,7 +22,6 @@ const Data = {
                 },
                 options: {
                     responsive: true,
-                    bezierCurve: false,
                 }
             };
             this.categoryData = {
