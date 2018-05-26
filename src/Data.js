@@ -14,7 +14,7 @@ const Data = {
                     labels: dates,
                     datasets: [
                         {
-                            label: "Recent spending",
+                            label: "Recent spending (in $)",
                             backgroundColor: "#81C784",
                             data: [7.05, 9.33, 4.19, 19.07, 30.23, 7.01, 0]
                         },
@@ -30,7 +30,7 @@ const Data = {
                     labels: ["Food", "Luxury", "Other"],
                     datasets: [
                         {
-                            data: [12, 25, 16],
+                            data: [36, 15, 24],
                             backgroundColor: ["#E57373", "#81C784", "#64B5F6"],
                         }
                     ]

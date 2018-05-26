@@ -26,7 +26,7 @@ class AppNavbar extends Component {
     return (
       <div className="Navbar">
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">WAT to eat</NavbarBrand>
+          <NavbarBrand href="/">WAT to Eat</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
@@ -41,15 +41,15 @@ class AppNavbar extends Component {
             <Nav navbar className="ml-auto">
               <NavItem className="d-none d-md-block">
                 {this.props.signedIn ?
-                  <Button onClick={this.props.signOut} color="primary">Logout</Button> :
-                  <Link to="/login"><Button color="primary">Login</Button></Link>
+                  <Button onClick={this.props.signOut} color="default">Logout</Button> :
+                  <Link to="/login"><Button color="default">Login</Button></Link>
                 }
               </NavItem>
               {
                 this.props.signedIn ?
                   <NavItem className="d-block d-md-none"
-                    onClick={this.props.signOut}>Logout</NavItem> :
-                  <NavItem className="d-block d-md-none"><Link to="/login" className="nav-item">Login</Link></NavItem>
+                    onClick={this.props.signOut}><span className="nav-link">Logout</span></NavItem> :
+                  <NavItem className="d-block d-md-none"><Link to="/login" className="nav-link">Login</Link></NavItem>
               }
             </Nav>
           </Collapse>

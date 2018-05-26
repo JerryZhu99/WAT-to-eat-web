@@ -29,11 +29,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 class App extends Component {
 
   state = {
-    signedIn: false
+    signedIn: Auth.signedIn
   }
 
-  signIn = () => {
-    return Auth.signIn().then(() => {
+  signIn = (credentials) => {
+    return Auth.signIn(credentials).then(() => {
       this.setState({ signedIn: Auth.signedIn });
     });
   }

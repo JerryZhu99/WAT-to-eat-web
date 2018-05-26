@@ -35,7 +35,7 @@ class DashboardScreen extends Component {
                     <div className="row mb-4">
                         <div className="col-6">
                             <div className="box">
-                                <h4>
+                                <h4 className="h5">
                                     Last Month
                                 </h4>
                                 <h4 className="display-4">
@@ -45,7 +45,7 @@ class DashboardScreen extends Component {
                         </div>
                         <div className="col-6">
                             <div className="box">
-                                <h4>
+                                <h4 className="h5">
                                     Budget
                                 </h4>
                                 <h4 className="display-4">
@@ -61,10 +61,10 @@ class DashboardScreen extends Component {
 
                     <div className="row">
                         <div className="col col-md-6 py-3">
-                            <Bar data={this.state.timeData.data} options={this.state.timeData.option} />
+                            <Bar data={this.state.timeData.data} options={this.state.timeData.option} height={200} />
                         </div>
                         <div className="col col-md-6 py-3">
-                            <Doughnut data={this.state.categoryData.data} options={this.state.categoryData.options} />
+                            <Doughnut data={this.state.categoryData.data} options={this.state.categoryData.options} height={180} />
                         </div>
                     </div>
 
