@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 
 import "./DashboardScreen.css"
 
-import { Line } from 'react-chartjs'
+import { Bar, Doughnut, Line } from 'react-chartjs-2'
 
 class DashboardScreen extends Component {
     constructor(props) {
@@ -14,23 +14,33 @@ class DashboardScreen extends Component {
         ))
 
         this.state = {
-            data: {
-                labels: dates,
-                datasets: [
-                    {
-                        label: "My First dataset",
-                        fillColor: "rgba(220,220,220,0.2)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        pointColor: "rgba(220,220,220,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(220,220,220,1)",
-                        data: [65, 59, 80, 81, 56, 55, 40]
-                    }
-                ]
+            timeData: {
+                data: {
+                    labels: dates,
+                    datasets: [
+                        {
+                            label: "Recent spending",
+                            backgroundColor: "#81C784",
+                            data: [7.05, 9.33, 4.19, 19.07, 30.23, 7.01, 0]
+                        },
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    bezierCurve: false,
+                }
             },
-            options: {
-                bezierCurve: false
+            categoryData: {
+                data: {
+                    labels: ["Food", "Luxury", "Other"],
+                    datasets: [
+                        {
+                            data: [12, 25, 16],
+                            backgroundColor: ["#E57373", "#81C784", "#64B5F6"],
+                        }
+                    ]
+                },
+
             }
         }
     }
@@ -44,26 +54,39 @@ class DashboardScreen extends Component {
                     <div className="row mb-4">
                         <div className="col-6">
                             <div className="box">
-                                <h3>
+                                <h4>
                                     Last Month
-                                </h3>
-                                <h3 className="display-4">
-                                    $800
-                                </h3>
+                                </h4>
+                                <h4 className="display-4">
+                                    $877
+                                </h4>
                             </div>
                         </div>
                         <div className="col-6">
                             <div className="box">
-                                <h3>
+                                <h4>
                                     Budget
-                                </h3>
-                                <h3 className="display-4">
-                                    $750
-                                </h3>
+                                </h4>
+                                <h4 className="display-4">
+                                    $800
+                                </h4>
                             </div>
                         </div>
                     </div>
-                    <Line data={this.state.data} options={this.state.options} width="800px" />
+
+                    <div className="box">
+                        <h3>Current Spending: <span className="text-success">Under budget!</span></h3>
+                    </div>
+
+                    <div className="row">
+                        <div className="col col-md-6 py-3">
+                            <Bar data={this.state.timeData.data} options={this.state.timeData.option} />
+                        </div>
+                        <div className="col col-md-6 py-3">
+                            <Doughnut data={this.state.categoryData.data} options={this.state.categoryData.options} />
+                        </div>
+                    </div>
+
                     <h2>Recommended Places</h2>
                     <div className="row">
                         <div className="col">

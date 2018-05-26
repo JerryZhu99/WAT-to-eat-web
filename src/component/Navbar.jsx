@@ -32,10 +32,10 @@ class AppNavbar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
               <NavItem>
-                <Link to="/dashboard"><NavLink>Dashboard</NavLink></Link>
+                <Link to="/dashboard" className="nav-link">Dashboard</Link>
               </NavItem>
               <NavItem>
-                <Link to="/suggestions"><NavLink>Suggestions</NavLink></Link>
+                <Link to="/suggestions" className="nav-link">Suggestions</Link>
               </NavItem>
 
             </Nav>
