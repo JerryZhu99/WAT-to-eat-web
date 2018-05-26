@@ -6,7 +6,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   Button
 } from 'reactstrap';
 import { Link } from 'react-router-dom'
@@ -50,7 +49,7 @@ class AppNavbar extends Component {
                 this.props.signedIn ?
                   <NavItem className="d-block d-md-none"
                     onClick={this.props.signOut}>Logout</NavItem> :
-                  <Link to="/login"><NavItem className="d-block d-md-none">Login</NavItem></Link>
+                  <NavItem className="d-block d-md-none"><Link to="/login" className="nav-item">Login</Link></NavItem>
               }
             </Nav>
           </Collapse>

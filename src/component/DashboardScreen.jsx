@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 
 import "./DashboardScreen.css"
 
-import { Bar, Doughnut, Line } from 'react-chartjs-2'
+import { Bar, Doughnut } from 'react-chartjs-2'
 
 class DashboardScreen extends Component {
     constructor(props) {
