@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-
-import { Container, Badge } from 'reactstrap';
-
-import GoogleMapEmbed from './GoogleMap'
-import Location from '../Location'
-
-import { Marker, GoogleMap } from "react-google-maps";
+import { Marker } from "react-google-maps";
+import { Badge, Container } from 'reactstrap';
+import Location from '../Location';
+import GoogleMapEmbed from './GoogleMap';
 
 class SuggestionScreen extends Component {
     state = {

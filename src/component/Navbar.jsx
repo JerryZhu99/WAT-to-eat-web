@@ -9,6 +9,7 @@ import {
   Button
 } from 'reactstrap';
 import { Link } from 'react-router-dom'
+import Notifications from '../Notifications';
 class AppNavbar extends Component {
   constructor(props) {
     super(props);
@@ -39,6 +40,9 @@ class AppNavbar extends Component {
 
             </Nav>
             <Nav navbar className="ml-auto">
+              <NavItem hidden={Notifications.enabled}>
+                <span className="nav-link" onClick={Notifications.enable}>Turn on Notifications</span>
+              </NavItem>
               <NavItem className="d-none d-md-block">
                 {this.props.signedIn ?
                   <Button onClick={this.props.signOut} color="default">Logout</Button> :
