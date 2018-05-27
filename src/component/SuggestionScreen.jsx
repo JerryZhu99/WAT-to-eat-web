@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Container } from 'reactstrap';
+import { Container, Badge } from 'reactstrap';
 
 import GoogleMapEmbed from './GoogleMap'
 import Location from '../Location'
@@ -71,6 +71,16 @@ class SuggestionScreen extends Component {
                         {this.state.restaurants.map(e =>
                             (<div className="location box" key={e.id}>
                                 <h4>{e.name}</h4>
+                                <div>
+                                    <Badge pill color={e.price_level < 2 ? "success" : undefined}>{(() => {
+                                        let price = "$";
+                                        for (let i = 0; i < e.price_level; i++) {
+                                            price += "$";
+                                        }
+                                        return price
+                                    })()}</Badge>
+                                    <Badge pill className="ml-1">{e.rating} ★</Badge>
+                                </div>
                                 <span className="Details">{e.vicinity}</span>
                             </div>))
                         }
