@@ -17,7 +17,7 @@ class SuggestionScreen extends Component {
         Location.search({ minprice: 0, maxprice: 2 }).then((data) => {
             console.log(data.results)
             this.setState({
-                restaurants: data.results
+                restaurants: data.results || []
             })
         });
     }
