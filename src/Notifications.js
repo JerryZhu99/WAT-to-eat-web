@@ -1,4 +1,5 @@
 
+navigator.serviceWorker.register('service-worker.js');
 
 
 const Notifications = {
@@ -25,7 +26,9 @@ const Notifications = {
         if (Notification.permission === "granted") {
             Notifications.enabled = false;
             if (vibrate) vibrate = [200, 100, 200];
-            new Notification(title, { body, vibrate });
+            navigator.serviceWorker.ready.then(function (registration) {
+                registration.showNotification(title, { body, vibrate });
+            })
         }
     }
 }
