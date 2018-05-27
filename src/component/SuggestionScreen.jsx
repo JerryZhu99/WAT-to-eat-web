@@ -15,9 +15,9 @@ class SuggestionScreen extends Component {
             this.setState({ location: loc.coords });
         })
         Location.search({ minprice: 0, maxprice: 2 }).then((data) => {
-            console.log(data.results)
+            console.log(data)
             this.setState({
-                restaurants: data.results || []
+                restaurants: data || []
             })
         });
     }
