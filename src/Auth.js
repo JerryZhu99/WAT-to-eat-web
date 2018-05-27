@@ -4,7 +4,6 @@
 const Auth = {
     signedIn: localStorage.getItem("login") === "true",
     signIn(credentials) {
-        console.log(credentials)
         return new Promise((resolve, reject) => setTimeout(() => {
             if (credentials && credentials.email === "test" && credentials.password === "password") {
                 this.signedIn = true;

@@ -15,7 +15,7 @@ class WelcomeScreen extends Component {
                 <Container>
                     <Jumbotron className="mt-3">
                         <h1 className="display-3">Budget Proactively.</h1>
-                        <p className="lead">WAT to Eat uses your spending habits to recommend you food within your budget, and lets you know when you go over.</p>
+                        <p className="lead">Cocoa uses your spending habits to recommend you food within your budget, and lets you know when you go over.</p>
                         <hr className="my-2" />
                         <p className="lead">
                             <Button color="success">Get Started</Button>
@@ -34,8 +34,8 @@ class WelcomeScreen extends Component {
 
                             <h2>Budgeted Suggestions</h2>
                             <p>
-                                WAT to Eat lets you choose a meal that fits your budget.
-                                Whether you want to save or splurge, WAT to Eat suggests restaurants that fit the bill.
+                                Cocoa lets you choose a meal that fits your budget.
+                                Whether you want to save or splurge, Cocoa suggests restaurants that fit the bill.
                             </p>
                         </div>
 
@@ -50,7 +50,7 @@ class WelcomeScreen extends Component {
 
                             <h2>Friendly Reminders</h2>
                             <p>
-                                WAT to Eat informs you of the average meal prices when you visit a restaurant above your budget.
+                                Cocoa informs you of the average meal prices when you visit a restaurant above your budget.
                             </p>
                         </div>
 
@@ -62,7 +62,7 @@ class WelcomeScreen extends Component {
                             </div>
                             <h2>Data Breakdowns</h2>
                             <p>
-                                WAT to Eat breaks down your spending habits and helps you set goals for the future.
+                                Cocoa breaks down your spending habits and helps you set goals for the future.
                             </p>
                         </div>
                     </div>
