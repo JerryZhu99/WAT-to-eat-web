@@ -21,6 +21,21 @@ const Location = {
         navigator.geolocation.clearWatch(id)
     },
 
+    search(query) {
+        return this.getLocation().then((location) => {
+            return axios.get('http://ruhackbackend.herokuapp.com', {
+                params: {
+                    type: "restaurant",
+                    location: `${location.coords.latitude},${location.coords.longitude}`,
+                    ...query
+                }
+            })
+        })
+            .then((response) => {
+                return response.data;
+            }).catch(console.error)
+    }
+
 }
 
 export default Location;

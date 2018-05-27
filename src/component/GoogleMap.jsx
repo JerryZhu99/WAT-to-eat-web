@@ -12,6 +12,7 @@ class GoogleMapEmbed extends Component {
                     defaultZoom={15}
                     defaultCenter={loc}
                 >
+                    {this.props.children}
                     <Marker position={loc} />
                 </GoogleMap>
             </div>

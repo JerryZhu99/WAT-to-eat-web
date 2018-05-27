@@ -5,15 +5,24 @@ import { Container } from 'reactstrap';
 import GoogleMapEmbed from './GoogleMap'
 import Location from '../Location'
 
+import { Marker, GoogleMap } from "react-google-maps";
+
 class SuggestionScreen extends Component {
     state = {
-        location: null
+        location: null,
+        restaurants: []
     }
     watchId;
     componentWillMount(props) {
         this.watchId = Location.watchLocation((loc) => {
             this.setState({ location: loc.coords });
         })
+        Location.search({ minprice: 0, maxprice: 2 }).then((data) => {
+            console.log(data.results)
+            this.setState({
+                restaurants: data.results
+            })
+        });
     }
     componentWillUnmount() {
         Location.stopWatching(this.watchId)
@@ -33,7 +42,25 @@ class SuggestionScreen extends Component {
                                     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                                     loadingElement={<div style={{ height: `100%` }} />}
                                     containerElement={<div style={{ height: `400px` }} />}
-                                    mapElement={<div style={{ height: `100%` }} />} />
+                                    mapElement={<div style={{ height: `100%` }} />} >
+                                    {this.state.restaurants.map(e =>
+                                        (<Marker key={e.id}
+                                            position={e.geometry.location}
+                                            label={{
+                                                text: e.name,
+                                                color: "#212529",
+                                                fontSize: "12px",
+                                                fontWeight: "bold"
+                                            }}
+                                            icon={{
+                                                url: e.icon,
+                                                scaledSize: new window.google.maps.Size(32, 32),
+                                                labelOrigin: new window.google.maps.Point(16, -8)
+                                            }}
+                                        />)
+                                    )}
+
+                                </GoogleMapEmbed>
                                 :
                                 ""
                         }
@@ -41,22 +68,13 @@ class SuggestionScreen extends Component {
                 </div>
                 <div className="row">
                     <div className="col">
-                        <div className="location box">
-                            <h4>Location Name</h4>
-                            <span className="Details">$10, Unit Street, City</span>
-                        </div>
-                        <div className="location box">
-                            <h4>Location Name</h4>
-                            <span className="Details">$10, Unit Street, City</span>
-                        </div>
-                        <div className="location box">
-                            <h4>Location Name</h4>
-                            <span className="Details">$10, Unit Street, City</span>
-                        </div>
-                        <div className="location box">
-                            <h4>Location Name</h4>
-                            <span className="Details">$10, Unit Street, City</span>
-                        </div>
+                        {this.state.restaurants.map(e =>
+                            (<div className="location box" key={e.id}>
+                                <h4>{e.name}</h4>
+                                <span className="Details">{e.vicinity}</span>
+                            </div>))
+                        }
+
                     </div>
                 </div>
             </Container>
