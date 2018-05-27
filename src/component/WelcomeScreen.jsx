@@ -28,7 +28,7 @@ class WelcomeScreen extends Component {
                         <div className="col-md-4 p-3">
                             <div className="icon-wrapper w-100 d-flex flex-column align-items-center">
                                 <div className="icon">
-                                    <i class="fas fa-balance-scale fa-7x"></i>
+                                    <i className="fas fa-balance-scale fa-7x"></i>
                                 </div>
                             </div>
 
@@ -43,7 +43,7 @@ class WelcomeScreen extends Component {
 
                             <div className="icon-wrapper w-100 d-flex flex-column align-items-center">
                                 <div className="icon">
-                                    <i class="fas fa-info-circle fa-7x"></i>
+                                    <i className="fas fa-info-circle fa-7x"></i>
                                 </div>
                             </div>
 
@@ -57,7 +57,7 @@ class WelcomeScreen extends Component {
                         <div className="col-md-4 p-3">
                             <div className="icon-wrapper w-100 d-flex flex-column align-items-center">
                                 <div className="icon">
-                                    <i class="fas fa-chart-bar fa-7x"></i>
+                                    <i className="fas fa-chart-bar fa-7x"></i>
                                 </div>
                             </div>
                             <h2>Data Breakdowns</h2>
