@@ -1,3 +1,4 @@
+import axios from 'axios'
 
 
 const Location = {
@@ -13,8 +14,13 @@ const Location = {
     },
 
     watchLocation(onChange) {
-        navigator.geolocation.watchPosition(onChange);
-    }
+        return navigator.geolocation.watchPosition(onChange);
+    },
+
+    stopWatching(id) {
+        navigator.geolocation.clearWatch(id)
+    },
+
 }
 
 export default Location;

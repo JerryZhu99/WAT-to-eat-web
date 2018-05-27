@@ -67,28 +67,6 @@ class DashboardScreen extends Component {
                             <Doughnut data={this.state.categoryData.data} options={this.state.categoryData.options} height={180} />
                         </div>
                     </div>
-
-                    <h2>Recommended Places</h2>
-                    <div className="row">
-                        <div className="col">
-                            <div className="location box">
-                                <h4>Location Name</h4>
-                                <span className="Details">$10, Unit Street, City</span>
-                            </div>
-                            <div className="location box">
-                                <h4>Location Name</h4>
-                                <span className="Details">$10, Unit Street, City</span>
-                            </div>
-                            <div className="location box">
-                                <h4>Location Name</h4>
-                                <span className="Details">$10, Unit Street, City</span>
-                            </div>
-                            <div className="location box">
-                                <h4>Location Name</h4>
-                                <span className="Details">$10, Unit Street, City</span>
-                            </div>
-                        </div>
-                    </div>
                 </Container>
             </div>
         );
