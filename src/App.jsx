@@ -40,7 +40,7 @@ class App extends Component {
     super(props);
     this.watchId = Location.watchLocation((loc) => {
       this.setState({ location: loc.coords });
-      axios.get("http://ruhackbackend.herokuapp.com/update", { params: { location: `${loc.coords.latitude},${loc.coords.longitude}` } }).then((response) => {
+      axios.get("https://ruhackbackend.herokuapp.com/update", { params: { location: `${loc.coords.latitude},${loc.coords.longitude}` } }).then((response) => {
         let locations = Object.keys(response.data);
         if (locations.length === 0) return;
         let spent = locations.reduce((acc, cur) => (acc + response.data[cur]), 0);

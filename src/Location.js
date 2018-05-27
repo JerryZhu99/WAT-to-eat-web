@@ -23,7 +23,7 @@ const Location = {
 
     search(query) {
         return this.getLocation().then((location) => {
-            return axios.get('http://ruhackbackend.herokuapp.com/search', {
+            return axios.get('https://ruhackbackend.herokuapp.com/search', {
                 params: {
                     type: "restaurant",
                     location: `${location.coords.latitude},${location.coords.longitude}`,
